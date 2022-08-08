@@ -1,4 +1,6 @@
+import br.com.dio.desafio.dominio.Bootcamp;
 import br.com.dio.desafio.dominio.Curso;
+import br.com.dio.desafio.dominio.Dev;
 import br.com.dio.desafio.dominio.Mentoria;
 
 import java.math.BigDecimal;
@@ -11,22 +13,51 @@ public class Main {
         Curso curso1 = new Curso();
         curso1.setTitulo("Curso Java");
         curso1.setDescricao("descricao curso java");
-        curso1.setCargaHoraria(8);
+        curso1.setCargaHoraria(20);
 
         Curso curso2 = new Curso();
         curso2.setTitulo("Curso Js");
         curso2.setDescricao("descricao curso js");
-        curso2.setCargaHoraria(8);
+        curso2.setCargaHoraria(10);
 
 
-        Mentoria mentoria1 = new Mentoria();
-        mentoria1.setTitulo("mentoria java");
-        mentoria1.setDescricao("descricao mentoria java ");
-        mentoria1.setData(LocalDate.now());
+        Mentoria mentoria = new Mentoria();
+        mentoria.setTitulo("mentoria java");
+        mentoria.setDescricao("descricao mentoria java ");
+        mentoria.setData(LocalDate.now());
 
-        System.out.println(curso1);
-        System.out.println(curso2);
-        System.out.println(mentoria1);
+        Bootcamp bootcamp = new Bootcamp();
+        bootcamp.setNome("Bootcamp Java Developer");
+        bootcamp.setDescricao("Descricao Bootcamp Java Developer");
+        bootcamp.getConteudos().add(curso1);
+        bootcamp.getConteudos().add(curso2);
+        bootcamp.getConteudos().add(mentoria);
+
+        Dev devRaul = new Dev();
+        devRaul.setNome("Raul");
+        devRaul.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos inscritos " + devRaul.getConteudosInscritos());
+        devRaul.progredir();
+        devRaul.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos inscritos " + devRaul.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos " + devRaul.getConteudosConcluidos());
+        System.out.println("XP:" + devRaul.calcularXP());
+
+
+        System.out.println("---------------------------");
+        Dev devMary = new Dev();
+        devMary.setNome("Mary");
+        devMary.inscreverBootcamp(bootcamp);
+        System.out.println("Conteúdos inscritos " + devMary.getConteudosInscritos());
+        devMary.progredir();
+        System.out.println("-");
+        System.out.println("Conteúdos inscritos " + devMary.getConteudosInscritos());
+        System.out.println("Conteúdos Concluidos " + devMary.getConteudosConcluidos());
+        System.out.println("XP:" + devMary.calcularXP());
+
+
+
 
 
 
